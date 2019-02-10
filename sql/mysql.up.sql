@@ -82,3 +82,15 @@ CREATE TABLE IF NOT EXISTS offline_messages (
 ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE INDEX i_offline_messages_username ON offline_messages(username);
+
+CREATE TABLE IF NOT EXISTS pep_nodes (
+    jid VARCHAR(512) NOT NULL,
+    last_published_item TEXT NOT NULL,
+    updated_at DATETIME NOT NULL,
+    created_at DATETIME NOT NULL
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS pep_subscriptions (
+    updated_at DATETIME NOT NULL,
+    created_at DATETIME NOT NULL
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
