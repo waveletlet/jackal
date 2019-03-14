@@ -29,9 +29,13 @@ func newDialer(cfg *Config, router *router.Router) *dialer {
 }
 
 func (d *dialer) dial(localDomain, remoteDomain string) (*streamConfig, error) {
-	_, addrs, err := d.srvResolve("xmpp-server", "tcp", remoteDomain)
+	_, addrs, err := d.srvResolve("xmpps-server", "tcp", remoteDomain)
 	if err != nil {
-		log.Warnf("srv lookup error: %v", err)
+		var err2 error
+		_, addrs, err2 = d.srvResolve("xmpp-server", "tcp", remoteDomain)
+		if err2 != nil {
+			log.Warnf("srv lookup errors: %v; %v", err, err2)
+		}
 	}
 	var target string
 
