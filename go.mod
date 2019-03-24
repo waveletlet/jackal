@@ -8,6 +8,7 @@ require (
 	github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da // indirect
 	github.com/circonus-labs/circonus-gometrics v2.2.5+incompatible // indirect
 	github.com/circonus-labs/circonusllhist v0.1.3 // indirect
+	github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgraph-io/badger v1.5.3
 	github.com/dgryski/go-farm v0.0.0-20180109070241-2de33835d102 // indirect

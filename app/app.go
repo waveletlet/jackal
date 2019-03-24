@@ -30,6 +30,8 @@ import (
 	"github.com/ortuman/jackal/storage"
 	"github.com/ortuman/jackal/version"
 	"github.com/pkg/errors"
+
+	"github.com/coreos/go-systemd/daemon"
 )
 
 const (
@@ -190,9 +192,12 @@ func (a *Application) Run() error {
 		}
 	}
 
+	daemon.SdNotify(false, daemon.SdNotifyReady)
+
 	// ...wait for stop signal to shutdown
 	sig := a.waitForStopSignal()
 	log.Infof("received %s signal... shutting down...", sig.String())
+	daemon.SdNotify(false, daemon.SdNotifyStopping)
 
 	return a.gracefullyShutdown()
 }
